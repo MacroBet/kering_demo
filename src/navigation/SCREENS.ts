@@ -1,4 +1,4 @@
-import {Delivery, Order} from '../redux/demoReducer';
+import {Order} from '../redux/demoReducer';
 
 export type RootStackParamList = {
   LandingScreen: undefined;
@@ -7,8 +7,17 @@ export type RootStackParamList = {
   OrderDetailScreen: {order: Order};
 };
 
-export type HomeTabParamList = {
+export type OrderStackParamList = {
   OrdersScreen: undefined;
+};
+
+export type DeliveryStackParamList = {
   DeliveriesScreen: undefined;
   DeliveryDetailScreen: {deliveryId: string};
 };
+
+export type HomeTabParamList = OrderStackParamList &
+  DeliveryStackParamList & {
+    OrdersScreen: undefined;
+    DeliveriesScreen: undefined;
+  };

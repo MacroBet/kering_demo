@@ -1,15 +1,15 @@
-import {View, Button, FlatList} from 'react-native';
 import React, {useCallback, useMemo, useState} from 'react';
+import {Button, FlatList, View} from 'react-native';
 import {useSelector} from 'react-redux';
-import {demoState} from '../redux/store';
+import {Row, Screen} from '../components';
+import {HomeTabScreenProps} from '../navigation';
 import {
   deleteOrders,
   mergeOrders,
   Order,
   pushOrder,
 } from '../redux/demoReducer';
-import {Row, Screen} from '../components';
-import {HomeTabScreenProps} from '../navigation';
+import {demoState} from '../redux/store';
 
 export function OrdersScreen({navigation}: HomeTabScreenProps<'OrdersScreen'>) {
   const {orders} = useSelector(demoState);

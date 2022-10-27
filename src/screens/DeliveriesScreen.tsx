@@ -1,10 +1,10 @@
-import {View, Text, Button, FlatList} from 'react-native';
-import React, {useCallback, useMemo, useState} from 'react';
+import React from 'react';
+import {FlatList} from 'react-native';
 import {useSelector} from 'react-redux';
-import {demoState} from '../redux/store';
-import {deleteOrders, Delivery, Order, pushOrder} from '../redux/demoReducer';
 import {Row, Screen} from '../components';
 import {HomeTabScreenProps} from '../navigation';
+import {Delivery} from '../redux/demoReducer';
+import {demoState} from '../redux/store';
 
 export function DeliveriesScreen({
   navigation,

@@ -1,7 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import React, {ComponentType} from 'react';
+import React from 'react';
 import {
   DeliveriesScreen,
   DeliveryDetailScreen,
@@ -9,12 +9,17 @@ import {
   OrderDetailScreen,
   OrdersScreen,
 } from '../screens';
-import {HomeTabParamList, RootStackParamList} from './SCREENS';
+import {
+  DeliveryStackParamList,
+  HomeTabParamList,
+  OrderStackParamList,
+  RootStackParamList,
+} from './SCREENS';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<HomeTabParamList>();
-const OrderStack = createStackNavigator();
-const DeliveryStack = createStackNavigator();
+const OrderStack = createStackNavigator<OrderStackParamList>();
+const DeliveryStack = createStackNavigator<DeliveryStackParamList>();
 
 const OrdersTab = () => (
   <OrderStack.Navigator
@@ -39,11 +44,6 @@ const DeliveriesTab = () => (
     />
   </DeliveryStack.Navigator>
 );
-
-// wrapInSharedElementStack(
-//   DeliveriesScreen,
-//   'DeliveriesTab',
-// );
 
 export const AppNavigator = () => {
   const TabNavigator = () => (
