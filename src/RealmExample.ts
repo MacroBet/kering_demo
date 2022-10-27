@@ -10,7 +10,7 @@ const TaskSchema = {
   primaryKey: '_id',
 };
 
-async function quickStart() {
+export async function quickStart() {
   const realm = await Realm.open({
     path: 'myrealm',
     schema: [TaskSchema],
@@ -91,6 +91,3 @@ async function quickStart() {
   // Remember to close the realm
   realm.close();
 }
-quickStart().catch(error => {
-  console.log(`An error occurred: ${error}`);
-});

@@ -4,7 +4,12 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {AppNavigator} from './src/navigation/Navigator';
+import {quickStart} from './src/RealmExample';
 import {persistor, store} from './src/redux/store';
+
+quickStart().catch(error => {
+  console.log(`An error occurred: ${error}`);
+});
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
