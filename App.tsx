@@ -1,4 +1,5 @@
-import React from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {useEffect} from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Provider} from 'react-redux';
@@ -13,6 +14,12 @@ quickStart().catch(error => {
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
+
+  // useEffect(() => {
+  //   AsyncStorage.clear().then(() => {
+  //     console.log('pulito');
+  //   });
+  // }, []);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,

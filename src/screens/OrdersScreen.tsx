@@ -3,17 +3,24 @@ import {Button, FlatList, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import {Row, Screen} from '../components';
 import {HomeTabScreenProps} from '../navigation';
-import {
-  deleteOrders,
-  mergeOrders,
-  Order,
-  pushOrder,
-} from '../redux/demoReducer';
+// import {
+//   deleteOrders,
+//   mergeOrders,
+//   Order,
+//   pushOrder,
+// } from '../redux/demoReducer';
 import {demoState} from '../redux/store';
+import {Order} from '../types';
+import {useDemoStore} from '../zustand/rootZustand';
 
 export function OrdersScreen({navigation}: HomeTabScreenProps<'OrdersScreen'>) {
-  const {orders} = useSelector(demoState);
+  // const {orders} = useSelector(demoState);
+  const {orders, pushOrder, deleteOrders, mergeOrders} = useDemoStore(
+    state => state,
+  );
+
   const [selectedOrders, setselectedOrders] = useState<string[]>([]);
+  console.log('render orders');
 
   const toggleSelected = useCallback(
     (code: string) => {

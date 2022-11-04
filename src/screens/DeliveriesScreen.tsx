@@ -5,12 +5,14 @@ import {Row, Screen} from '../components';
 import {HomeTabScreenProps} from '../navigation';
 import {Delivery} from '../redux/demoReducer';
 import {demoState} from '../redux/store';
+import {useDemoStore} from '../zustand/rootZustand';
 
 export function DeliveriesScreen({
   navigation,
 }: HomeTabScreenProps<'DeliveriesScreen'>) {
-  const {deliveries} = useSelector(demoState);
-
+  const deliveries = useDemoStore(state => state.deliveries);
+  // const {deliveries} = useSelector(demoState);
+  console.log('render delivery');
   const renderItem = ({item}: {item: Delivery}) => {
     return (
       <Row

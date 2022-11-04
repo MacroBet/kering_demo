@@ -1,26 +1,25 @@
 import {View, Text, FlatList, Button} from 'react-native';
 import React, {useMemo} from 'react';
 import {HomeTabScreenProps} from '../navigation';
-import {
-  deleteDelivery,
-  Order,
-  toggleDeliveryStatus,
-} from '../redux/demoReducer';
+// import {deleteDelivery, toggleDeliveryStatus} from '../redux/demoReducer';
 import {Row, Screen} from '../components';
 import {demoState} from '../redux/store';
 import {useSelector} from 'react-redux';
+import {useDemoStore} from '../zustand/rootZustand';
+import {Order} from '../types';
 
 export function DeliveryDetailScreen({
   navigation,
   route,
 }: HomeTabScreenProps<'DeliveryDetailScreen'>) {
   const {deliveryId} = route.params;
-  const {deliveries} = useSelector(demoState);
-
-  const delivery = useMemo(
-    () => deliveries.find(itm => itm.id === deliveryId),
-    [deliveries, deliveryId],
+  // const {deliveries} = useSelector(demoState);
+  const {deliveries, deleteDelivery, toggleDeliveryStatus} = useDemoStore(
+    state => state,
   );
+
+  const delivery = deliveries.find(itm => itm.id === deliveryId);
+
   const renderItem = ({item}: {item: Order}) => {
     return (
       <Row

@@ -1,19 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {Delivery, Order} from '../types';
 import {store} from './store';
-
-export type OrderType = 'NEW' | 'OLD';
-export type DeliveryStatus = 'READY' | 'SENT';
-
-export interface Order {
-  code: string;
-  type: OrderType;
-}
-
-export interface Delivery {
-  id: string;
-  status: DeliveryStatus;
-  orders: Order[];
-}
 
 export interface DemoData {
   orders: Order[];
